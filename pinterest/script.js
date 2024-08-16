@@ -61,13 +61,36 @@ function showCards() {
 
 function showOverLay() {
   var searchInput = document.querySelector("#searchinput");
+  // overlay added
   searchInput.addEventListener("focus", function () {
     var overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
   });
+  // overlay removed
   searchInput.addEventListener("blur", function () {
     var overlay = document.querySelector(".overlay");
     overlay.style.display = "none";
+  });
+  // input text displayed
+  searchInput.addEventListener("input", function () {
+    const searchData = document.querySelector(".searchdata");
+    const filteredArr = arr.filter((obj) =>
+      obj.name.toLowerCase().startsWith(searchInput.value)
+    );
+    var clutter = "";
+    if (filteredArr.length > 0) {
+      searchData.style.display = "block";
+      filteredArr.forEach(function (obj) {
+        clutter += `<div class="res flex px-8 py-3">
+            <i class="ri-search-line font-semibold mr-5"></i>
+            <h3 class="font-semibold">${obj?.name}</h3>
+        </div>`;
+      });
+    } else {
+      searchData.style.display = "hidden";
+    }
+
+    searchData.innerHTML = clutter;
   });
 }
 

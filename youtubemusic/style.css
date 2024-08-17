@@ -85,11 +85,12 @@ html , body{
 
 #player h3{
     background-color: rgba(30, 30, 30, 0.737);
-    padding: 10px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    cursor: pointer;
 }
 #player h3 i{
     font-size: 24px;
